@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <section class="grid grid-template-areas">
+            <input disabled id="input-value" class="display">
+
+            <button onclick="clearinput()" class="item clear button-operations">AC</button>
+            <button onclick="invertvalue()" class="item plus-minus button-operations">+/-</button>
+            <button onclick="percent('%')" class="item percent button-operations">%</button>
+            <button onclick="insertvalues('/')" class="item buttonision button-operations-right">÷</button>
+
+            <button onclick="insertvalues('7')" class="item seven button-numbers">7</button>
+            <button onclick="insertvalues('8')" class="item eight button-numbers">8</button>
+            <button onclick="insertvalues('9')" class="item nine button-numbers">9</button>
+            <button onclick="insertvalues('*')" class="item multiplication button-operations-right">X</button>
+
+            <button onclick="insertvalues('4')" class="item four button-numbers">4</button>
+            <button onclick="insertvalues('5')" class="item five button-numbers">5</button>
+            <button onclick="insertvalues('6')" class="item six button-numbers">6</button>
+            <button onclick="insertvalues('-')" class="item minus button-operations-right">-</button>
+
+            <button onclick="insertvalues('1')" class="item one button-numbers">1</button>
+            <button onclick="insertvalues('2')" class="item two button-numbers">2</button>
+            <button onclick="insertvalues('3')" class="item three button-numbers">3</button>
+            <button onclick="insertvalues('+')" class="item plus button-operations-right">+</button>
+
+            <button onclick="insertvalues('0')" class="item zero button-numbers">0</button>
+            <button onclick="insertvalues('.')" class="item point button-numbers">,</button>
+            <button onclick="calculate()" class="item equal button-operations-right">=</button>
+
+        </section>
+    </div>
+
+</body>
+
+<style>
+    body {
+        background-color: lightblue;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Helvetica Neue", sans-serif;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+    }
+
+    section {
+        display: grid;
+        height: 480px;
+        width: 320px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    .item {
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+        outline: none;
+        border: 0.5px solid black;
+
+    }
+
+    .item:hover {
+        opacity: 0.7;
+    }
+
+    .item:active {
+        background-color: white;
+        opacity: 0.3;
+        color: black;
+    }
+
+    .display {
+        background-color: gray;
+        opacity: 0.6;
+        border: none;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        grid-column: 1 / 5;
+        font-size: 26px;
+        color: white;
+        padding-left: 15px;
+    }
+
+    .zero {
+        grid-column: 1 / 3;
+    }
+
+    .button-operations-right {
+        background-color: orange;
+    }
+
+    .button-numbers {
+        background-color: gray;
+    }
+
+    .button-operations {
+        background-color: grey;
+    }
+</style>
+
+<script>
+    function insertvalues(num) {
+        const input = document.getElementById('input-value').value
+        document.getElementById('input-value').value = input + num
+
+    }
+
+    function calculate() {
+        const input = document.getElementById('input-value').value
+        document.getElementById('input-value').value = eval(input)
+    }
+
+    function clearinput() {
+        document.getElementById('input-value').value = ""
+    }
+
+    function invertvalue() {
+        calculate()
+        const input = document.getElementById('input-value').value
+        document.getElementById('input-value').value = input * -1
+    }
+
+    function percent(){
+        const input = document.getElementById('input-value').value
+        document.getElementById('input-value').value = input / 100
+    }
+
+</script>
+
+</html>
